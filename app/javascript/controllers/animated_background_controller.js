@@ -110,7 +110,14 @@ export default class extends Controller {
     return rawPaths.map(d => ({ d, opacity: 1 }))
   }
 
-
+// Hahaha, i can already picture what you're thinking
+// "OMG, what kinda psychopath would hardcode all these SVG paths in a JS file??"
+// Well it's easy, the answer is : first, i have free will, so i can willingly
+// torture myself, and second, i'm a developer! So i hate torturing myself
+// That's why i got a python script that i can feed black and white images
+// and it extracts the contrast automatically into an SVG array.
+// Technology is wonderful, isn't it? I sure hope if you wanna do the same
+// you have a similar python script, right? Hehe.. right? 
 
 getSectionLineArray(sectionId) {
   const lineData = {
