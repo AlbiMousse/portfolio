@@ -1,0 +1,143 @@
+<div class="max-w-4xl mx-auto min-h-screen flex items-center justify-center flex-col gap-4">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+    <div class="flex flex-col justify-start">
+    <h2 class="text-4xl font-bold mb-6"><%= t("contact.title") %></h2>
+    
+    <p class="text-lg text-gray-400 mb-8">
+      <%= t("contact.subtitle") %>
+    </p>
+
+    <div class="flex items-center gap-3 text-gray-400">
+      <svg class="w-5 h-5 text-white/60" fill="currentColor" viewBox="0 0 20 20">
+      <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+      </svg>
+      <span><%= t("contact.location") %></span>
+    </div>
+    </div>
+
+    <form id="contact-form" class="space-y-6">
+
+    <div id="success-message" class="hidden p-4 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400">
+      <%= t("contact.form.success") %>
+    </div>
+
+    <div id="error-message" class="hidden p-4 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400">
+      <span id="error-text"></span>
+    </div>
+
+    <div>
+      <input
+      id="contact-name"
+      type="text"
+      name="contact[name]"
+      placeholder="<%= t("contact.form.name_placeholder") %>"
+      class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white
+              placeholder-gray-500 focus:outline-none focus:border-white/30 focus:bg-white/10
+              transition-all duration-300 backdrop-blur-md"
+      required
+      />
+    </div>
+
+    <div>
+      <input
+      id="contact-email"
+      type="email"
+      name="contact[email]"
+      placeholder="Email"
+      class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white
+              placeholder-gray-500 focus:outline-none focus:border-white/30 focus:bg-white/10
+              transition-all duration-300 backdrop-blur-md"
+      required
+      />
+    </div>
+
+    <div>
+      <input
+      id="contact-subject"
+      type="text"
+      name="contact[subject]"
+      placeholder="<%= t("contact.form.subject_placeholder") %>"
+      class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white
+              placeholder-gray-500 focus:outline-none focus:border-white/30 focus:bg-white/10
+              transition-all duration-300 backdrop-blur-md"
+      required
+      />
+    </div>
+
+    <div>
+      <textarea
+      id="contact-message"
+      name="contact[message]"
+      placeholder="<%= t("contact.form.message_placeholder") %>"
+      rows="5"
+      class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white
+              placeholder-gray-500 focus:outline-none focus:border-white/30 focus:bg-white/10
+              transition-all duration-300 backdrop-blur-md resize-none"
+      required
+      ></textarea>
+    </div>
+
+    <button
+      id="submit-btn"
+      type="submit"
+      class="w-full px-6 py-3 rounded-lg bg-white/10 border border-white/20 text-white font-medium
+              hover:bg-white/20 hover:border-white/30 transition-all duration-300
+              active:scale-95"
+    >
+      <%= t("contact.form.submit") %>
+    </button>
+    </form>
+
+    <script>
+      document.getElementById('contact-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const form = e.target;
+      const submitBtn = document.getElementById('submit-btn');
+      const successMsg = document.getElementById('success-message');
+      const errorMsg = document.getElementById('error-message');
+      const errorText = document.getElementById('error-text');
+
+      successMsg.classList.add('hidden');
+      errorMsg.classList.add('hidden');
+      
+      submitBtn.disabled = true;
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = '<%= t("contact.form.sending") %>';
+      
+      try {
+        const formData = new FormData(form);
+        const response = await fetch('<%= contacts_path %>', {
+          method: 'POST',
+          body: formData,
+          headers: {
+              'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content,
+              'Accept': 'application/json'
+          }
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok && data.success) {
+          successMsg.classList.remove('hidden');
+          form.reset();
+          setTimeout(() => successMsg.classList.add('hidden'), 5000);
+        } else {
+          errorText.textContent = data.errors ? data.errors.join(', ') : data.message;
+          errorMsg.classList.remove('hidden');
+        }
+      } catch (error) {
+        errorText.textContent = '<%= t("contact.form.error") %>';
+        errorMsg.classList.remove('hidden');
+        console.error('Error:', error);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+    </script>
+
+  </div>
+</div>
+

@@ -1,0 +1,27 @@
+
+<div class="max-w-5xl mx-auto min-h-screen flex justify-center flex-col gap-4">
+  <h2 class="text-4xl font-bold mb-12"><%= t("technology.title") %></h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <% t("technology.categories").each do |category_key, category| %>
+    <div>
+
+      <h3 class="text-2xl font-semibold text-white mb-6">
+      <%= category[:name] %>
+      </h3>
+
+      <div class="flex flex-wrap gap-3">
+      <% category[:skills].each do |skill| %>
+        <div class="px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white/90 text-sm font-medium hover:bg-white/15 hover:border-white/30 transition-all duration-300 flex items-center gap-2">
+          <% if technology_logo_exists?(skill) %>
+            <img src="<%= technology_logo_url(skill) %>" alt="<%= skill %> logo" class="w-5 h-5 object-contain" />
+          <% end %>
+          <%= skill %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+

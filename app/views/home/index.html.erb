@@ -1,54 +1,56 @@
-<!-- HERO SECTION -->
-<section class="min-h-screen bg-secondary text-white px-6">
-  <header class="flex items-center justify-between py-6">
-    <div class="flex items-center gap-2">
-      <div class="w-8 h-8 bg-primary rounded-md"></div>
-      <span class="font-semibold tracking-wide">LOGO HERE</span>
-    </div>
+<div
+  class="relative h-screen bg-cover bg-center bg-no-repeat"
+>
 
-    <nav class="flex space-x-8 text-body">
-      <a href="#" class="hover:text-primary transition">Home</a>
-      <a href="#" class="hover:text-primary transition">About</a>
-      <a href="#" class="hover:text-primary transition">Service</a>
-      <a href="#" class="hover:text-primary transition">Work</a>
-      <a href="#" class="hover:text-primary transition">Contact</a>
-    </nav>
-  </header>
+  <%= render "shared/animated_background" %>
 
-  <div class="flex flex-col items-center mt-20 text-center">
-    
-    <!-- Profile Image -->
-    <div class="relative">
-      <div class="w-40 h-40 rounded-full p-1 bg-primary shadow-lg">
-        <img src="/your-image.jpg" alt="Profile" class="w-full h-full rounded-full object-cover">
+  <div class="absolute inset-0 bg-black/30"></div>
+
+  <div
+    class="relative h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth
+           text-textprimary"
+    data-controller="scroll fade"
+  >
+    <%= render "shared/navbar" %>
+
+    <section class="min-h-screen snap-start px-6" id="about" data-animated-background-section>
+      <%= render "shared/aboutme" %>
+    </section>
+
+    <div class="pt-32"></div> <!-- SPACER -->
+
+    <section class="min-h-screen snap-start px-6" id="whoami" data-animated-background-section>
+      <%= render "shared/whoami" %>
+    </section>
+
+    <div class="pt-32"></div> <!-- SPACER -->
+
+    <section id="experience" class="min-h-screen snap-start text-white px-6" data-animated-background-section>
+      <div class="max-w-4xl mx-auto">
+        <div data-controller="accordion" class="space-y-4">
+          <% t("experience.items").each do |item| %>
+            <%= render partial: "shared/experience", locals: { item: item } %>
+          <% end %>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Hello text -->
-    <div class="mt-6 text-accent tracking-widest text-sm uppercase">
-      Hello
-    </div>
+    <div class="pt-32"></div> <!-- SPACER -->
 
-    <!-- Name -->
-    <h1 class="mt-2 text-4xl md:text-5xl font-bold">
-      I'm <span class="text-primary">David</span> Smith
-    </h1>
+    <section class="min-h-screen snap-start px-6" id="projects" data-animated-background-section>
+      <%= render "shared/projects" %>
+    </section>
 
-    <!-- Subtitle -->
-    <p class="mt-4 text-body max-w-xl leading-relaxed">
-      I'm <span class="text-primary">CEO</span> of this company with a strong focus 
-      on building <span class="text-primary">web applications</span> &
-      <span class="text-primary">Graphic Design</span> with great user experiences.
-      <br>
-      Here's a bit more <a href="#" class="text-primary hover:underline">about me</a>.
-    </p>
+    <div class="pt-32"></div> <!-- SPACER -->
 
-    <!-- Social icons -->
-    <div class="flex gap-6 mt-6 text-body text-2xl">
-      <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-github"></i></a>
-      <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-twitter"></i></a>
-      <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-dribbble"></i></a>
-      <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-skype"></i></a>
-    </div>
+    <section id="technology" class="min-h-screen snap-start text-white px-6" data-animated-background-section>
+      <%= render "shared/technology" %>
+    </section>
+
+    <div class="pt-32"></div> <!-- SPACER -->
+
+    <section id="contact" class="min-h-screen snap-start text-white px-6" data-animated-background-section>
+      <%= render "shared/contact" %>
+    </section>
   </div>
-</section>
+</div>

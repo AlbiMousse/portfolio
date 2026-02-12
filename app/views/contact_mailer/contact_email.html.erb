@@ -1,0 +1,12 @@
+<p>Hello,</p>
+
+<p>You have received a new message from your portfolio contact form:</p>
+
+<div style="margin: 20px 0; padding: 15px; background-color: #f5f5f5; border-left: 4px solid #007bff;">
+  <p><strong>From:</strong> <%= @name %> (<%= @email %>)</p>
+  <p><strong>Subject:</strong> <%= @subject %></p>
+  <p><strong>Message:</strong></p>
+  <p><%= simple_format(@message) %></p>
+</div>
+
+<p>You can reply directly to this email to contact them.</p>

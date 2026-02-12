@@ -1,0 +1,31 @@
+<nav
+  data-scroll-target="navbar"
+  class="fixed top-6 left-1/2 z-50 -translate-x-1/2 transition-all duration-300 ease-out px-4 py-3"
+>
+  <div class="flex items-center gap-8 text-sm font-medium text-white/90">
+
+    <a 
+      href="<%= root_path %>#about" 
+      onclick="if (window.location.pathname === '/') { window.location.hash = 'about'; return false; }"
+      class="hover:text-white transition"
+    >
+      <%= t("nav.home") %>
+    </a>
+    
+    <%= link_to t("nav.about"), "#{root_path}#whoami", class: "hover:text-white transition", data: { scroll_to: 'whoami' } %>
+    <%= link_to t("nav.work"), "#{root_path}#experience", class: "hover:text-white transition", data: { scroll_to: 'experience' } %>
+    <%= link_to t("nav.projects"), "#{root_path}#projects", class: "hover:text-white transition", data: { scroll_to: 'projects' } %>
+    <%= link_to t("nav.technologies"), "#{root_path}#technology", class: "hover:text-white transition", data: { scroll_to: 'technology' } %>
+    <%= link_to t("nav.scorehouse"), scores_path, class: "hover:text-white transition" %>
+    <%= link_to t("nav.contact"), "#contact", class: "hover:text-white transition" %>
+
+    <div class="ml-6 flex gap-2 text-white/60">
+      <% I18n.available_locales.each do |locale| %>
+        <%= link_to locale.to_s.upcase,
+            url_for(locale: locale),
+            class: "hover:text-white transition #{'text-white' if I18n.locale == locale}" %>
+      <% end %>
+    </div>
+
+  </div>
+</nav>

@@ -11,3 +11,29 @@
 }
 
 */
+
+/* Light mode (default) */
+:root {
+  --color-primary: #F5F5F5;
+  --color-secondary: #FFFFFF;
+  --color-accent: #E5E5E5;
+  --color-body: #666666;
+  --color-textprimary: #1A1A1A;
+  --color-textaccent: #000000;
+}
+
+/* Dark mode */
+.dark {
+  --color-primary: #0A0A0A;
+  --color-secondary: #1A1A1A;
+  --color-accent: #2A2A2A;
+  --color-body: #B0B0B0;
+  --color-textprimary: #F5F5F5;
+  --color-textaccent: #FFFFFF;
+}
+
+/* Glass effect for navbar */
+.nav-glass {
+  backdrop-filter: saturate(180%) blur(12px);
+  background-color: rgba(255, 255, 255, 0.1);
+}

@@ -1,0 +1,120 @@
+<div
+  class="relative h-screen bg-cover bg-center bg-no-repeat"
+  style="background-image: url('https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2020/05/black-paper-background.jpg')"
+>
+  <div class="pt-8 px-4 md:px-8 max-w-6xl mx-auto">
+    <%= link_to "← #{t('scores.back_to_list')}", scores_path, class: "text-cyan-400 hover:text-cyan-300 transition text-lg inline-flex items-center gap-2" %>
+  </div>
+
+  <div class="px-4 md:px-8 max-w-6xl mx-auto py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div class="lg:col-span-2">
+        <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-lg overflow-hidden mb-8">
+          <%= image_tag @score.image_path, alt: @score.title, class: "w-full h-full object-cover" %>
+
+        </div>
+
+        <% if @score.audio_path.present? %>
+          <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-lg p-6 mb-8">
+            <h3 class="text-white font-bold mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M18 3a1 1 0 00-1.196-.15l-1.559.97A7 7 0 004.519 9.5H3a1 1 0 00-.82.4l-2 2.5a1 1 0 00.3 1.534L2.6 13.13A7 7 0 0016.639 7.28l1.559.97A1 1 0 0018 7V3z"></path>
+              </svg>
+              <%= t("scores.audio_preview") %>
+            </h3>
+            <audio 
+              controls 
+              class="w-full h-10 rounded bg-slate-900/50"
+              data-controller="score-player"
+            >
+              <%= audio_tag asset_path(@score.audio_path), controls: true, class: "w-full mt-2" %>
+              <%= t("scores.audio_not_supported") %>
+            </audio>
+          </div>
+        <% end %>
+
+        <% if @score.score_url.present? %>
+          <div class="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-white font-bold mb-1">
+                  <%= t("scores.view_full_score") %>
+                </h3>
+                <p class="text-gray-400 text-sm">
+                  <%= t("scores.click_to_open_pdf") %>
+                </p>
+              </div>
+              <%= link_to @score.score_url, target: "_blank", rel: "noopener noreferrer", class: "px-6 py-3 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold rounded-lg transition inline-flex items-center gap-2" do %>
+                <%= t("scores.open") %>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div>
+        <div class="mb-6">
+          <% if @score.arrangement? %>
+            <span class="px-4 py-2 bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 font-semibold rounded-lg inline-block">
+              <%= t("scores.arrangement") %>
+            </span>
+          <% else %>
+            <span class="px-4 py-2 bg-violet-500/20 border border-violet-500/40 text-violet-300 font-semibold rounded-lg inline-block">
+              <%= t("scores.composition") %>
+            </span>
+          <% end %>
+        </div>
+
+        <h1 class="text-4xl font-bold text-white mb-4">
+          <%= @score.title %>
+        </h1>
+
+        <p class="text-gray-400 text-sm mb-6 pb-6 border-b border-slate-700/50">
+          <%= @score.created_at.strftime("%B %d, %Y") %>
+        </p>
+
+        <div class="mb-8">
+          <h3 class="text-white font-bold text-lg mb-3">
+            <%= t("scores.description") %>
+          </h3>
+          <p class="text-gray-300 leading-relaxed">
+            <%= @score.description %>
+          </p>
+        </div>
+
+        <% if @score.instruments.present? %>
+          <div class="mb-8 pb-8 border-b border-slate-700/50">
+            <h3 class="text-white font-bold text-lg mb-3">
+              <%= t("scores.instruments") %>
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <% @score.instruments.split(",").each do |instrument| %>
+                <span class="px-3 py-1 bg-slate-700/50 text-gray-300 text-sm rounded">
+                  <%= instrument.strip %>
+                </span>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
+        <% if @score.tags.present? %>
+          <div>
+            <h3 class="text-white font-bold text-lg mb-3">
+              <%= t("scores.tags") %>
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <% @score.tags.split(",").each do |tag| %>
+                <span class="px-3 py-1 bg-gray-700/30 text-gray-400 text-sm rounded-full hover:bg-gray-700/50 transition">
+                  #<%= tag.strip %>
+                </span>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

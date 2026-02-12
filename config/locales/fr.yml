@@ -1,0 +1,131 @@
+fr:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "La validation a échoué : %{errors}" 
+        restrict_dependent_destroy: 
+        has_one: "Impossible de supprimer cet enregistrement car il a un %{record} associé." 
+        has_many: "Impossible de supprimer cet enregistrement car il a des %{record} associés."
+  nav:
+    home: "Accueil"
+    about: "À propos"
+    work: "Travail"
+    projects: "Projets"
+    scorehouse: "Partitions"
+    contact: "Contact"
+
+  hero:
+    title: "Salut, je m'appelle Alban"
+    subtitle: "J'étudis l'informatique à l'IUT de Blagnac et j'adore l'astronomie"
+
+  about:
+    title: "À propos de moi"
+    body: >
+      Je suis en dernière année de mon diplôme d'informatique à l'IUT de Blagnac,
+      développant principalement des applications back-end dans divers frameworks et langages,
+      mais travaillant également avec le déploiement, l'infrastructure et l'IoT. 
+      Vous voulez en voir plus ?
+      Voici mes liens
+
+  experience:
+    title: "Experience"
+    items:
+      - title: "Stagiaire Back-End Ruby"
+        company: "Capsens"
+        company_url: "https://www.capsens.eu"
+        location: "Paris, France"        
+        date: "Mars - Août 2025"        
+        description: |
+          Déploiement d'une solution de gestion extinctive pour un client du secteur immobilier, utilisant Ruby on Rails. Ajout de fonctionnalités à l'interface administrateur pour permettre la migration de données et le suivi de contrats.
+
+          Automatisation de processus de collecte et migrations de données à l'aide de scripts Ruby, améliorant l'efficacité et la précision des opérations de gestion des contrats.
+          
+          Développement de page d'assistance à utilisateur permettant d'alléger les requêtes au service client.
+
+  projects:
+    title: "Projets"
+    items:
+      - title: "Site Portfolio"
+        description: "Un site portfolio moderne et minimaliste construit avec Ruby on Rails, Tailwind CSS et Stimulus.js. Dispose d'un défilement fluide, du support du mode sombre et d'une conception réactive."
+        github: "https://github.com/alban/portfolio"
+        tags: ["Ruby on Rails", "Tailwind CSS", "Stimulus.js"]
+      - title: "Plateforme de Partitions Musicales"
+        description: "Une application web pour partager et gérer les partitions musicales. Construite avec React et Node.js, permettant aux musiciens de télécharger, d'organiser et de collaborer sur les arrangements musicaux."
+        github: "https://github.com/alban/music-scores"
+        tags: ["React", "Node.js", "MongoDB"]
+      - title: "Tableau de Bord Analytique"
+        description: "Un tableau de bord analytique en temps réel pour suivre les métriques et les performances des applications. Dispose de graphiques interactifs, de filtrage de données et de capacités d'export."
+        github: ""
+        tags: ["React", "TypeScript", "Chart.js"]
+
+  contact:
+    title: "Entrez en Contact"
+    subtitle: "Besoin d'informations supplémentaires? Contactez-moi ici"
+    location: "Blagnac, France"
+    form:
+      name_placeholder: "Votre Nom"
+      subject_placeholder: "Sujet"
+      message_placeholder: "Votre Message"
+      submit: "Envoyer le Message"
+      sending: "Envoi..."
+      success: "Merci! Votre message a été envoyé avec succès."
+      error: "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer."
+
+  technology:
+    title: "Technologies"
+    categories:
+      frontend:
+        name: "Frontend"
+        skills: ["React", "Vue.js", "Tailwind CSS", "JavaScript", "TypeScript", "HTML/CSS", "Stimulus.js"]
+      backend:
+        name: "Backend"
+        skills: ["Ruby on Rails", "Node.js", "Python", "REST APIs", "GraphQL"]
+      databases:
+        name: "Bases de Données"
+        skills: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "SQLite"]
+      languages:
+        name: "Langages"
+        skills: ["Ruby", "JavaScript", "Python", "TypeScript", "HTML", "CSS"] 
+
+  scores:
+    title: "Partitions Musicales"
+    subtitle: "Mes arrangements et compositions originales"
+    arrangements: "Arrangements"
+    compositions: "Compositions"
+    original: "Original" rendering: "Rendu"
+    no_arrangements: "Aucun arrangement pour le moment"
+    no_compositions: "Aucune composition pour le moment"
+    back_home: "Retour à l'Accueil"
+    back_to_list: "Retour aux Partitions"
+    arrangement: "Arrangement"
+    composition: "Composition"
+    view_score: "Voir la Partition"
+    audio_preview: "Aperçu Audio"
+    audio_not_supported: "Votre navigateur ne supporte pas l'élément audio."
+    view_full_score: "Voir la Partition Complète"
+    click_to_open_pdf: "Ouvrez la partition complète dans un nouvel onglet"
+    open: "Ouvrir le PDF"
+    description: "Description"
+    instruments: "Instruments"
+    tags: "Étiquettes"
+
+  activerecord:
+    errors:
+      models:
+        contact:
+          attributes:
+            name:
+              blank: "ne peut pas être vide"
+              too_short: "est trop court (minimum 2 caractères)"
+              too_long: "est trop long (maximum 100 caractères)"
+            email:
+              blank: "ne peut pas être vide"
+              invalid: "n'est pas un email valide"
+            subject:
+              blank: "ne peut pas être vide"
+              too_short: "est trop court (minimum 5 caractères)"
+              too_long: "est trop long (maximum 200 caractères)"
+            message:
+              blank: "ne peut pas être vide"
+              too_short: "est trop court (minimum 10 caractères)"
+              too_long: "est trop long (maximum 5000 caractères)"

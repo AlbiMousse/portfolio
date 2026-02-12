@@ -28,4 +28,125 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  nav:
+    home: "Home"
+    about: "About"
+    work: "Work"
+    projects: "Projects"
+    scorehouse: "Music Scores"
+    contact: "Contact"
+
+  hero:
+    title: "Hi, I'm Alban"
+    subtitle: "Computer Science Student & Developer. Astronomy & Music Enthusiast."
+
+  about:
+    title: "About Me"
+    body: >
+      I'm completing my last year of my computer science degree at the IUT of Blagnac,
+      developing mainly back-end applications in various frameworks and languages,
+      but also working with deployment, infrastructure and IoT.
+      Want to see more?
+      Here are my links
+
+  experience:
+    title: "Experience"
+    items:
+      - title: "Ruby Back-End Intern"
+        company: "Capsens"
+        company_url: "https://www.capsens.eu"
+        location: "Paris, France"        
+        date: "March - August 2025"        
+        description: |
+          Deployed a contract management solution for a client in the real estate sector, using Ruby on Rails. Added features to the admin interface to allow data migration and contract tracking.
+          Automated data collection and migration processes using Ruby scripts, improving efficiency and accuracy of contract management operations.
+          Developed user support page to reduce customer service requests.
+
+  projects:
+    title: "Projects"
+    items:
+      - title: "Portfolio Website"
+        description: "A modern, minimalist portfolio website built with Ruby on Rails, Tailwind CSS, and Stimulus.js. Features smooth scrolling, dark mode support, and responsive design."
+        github: "https://github.com/alban/portfolio"
+        tags: ["Ruby on Rails", "Tailwind CSS", "Stimulus.js"]
+      - title: "Music Score Platform"
+        description: "A web application for sharing and managing music scores. Built with React and Node.js, allowing musicians to upload, organize, and collaborate on musical arrangements."
+        github: "https://github.com/alban/music-scores"
+        tags: ["React", "Node.js", "MongoDB"]
+      - title: "Analytics Dashboard"
+        description: "Real-time analytics dashboard for tracking application metrics and performance. Features interactive charts, data filtering, and export capabilities."
+        github: ""
+        tags: ["React", "TypeScript", "Chart.js"]
+
+  contact:
+    title: "Get in Touch"
+    subtitle: "Need additional info? Contact me here"
+    location: "Blagnac, France"
+    form:
+      name_placeholder: "Your Name"
+      subject_placeholder: "Subject"
+      message_placeholder: "Your Message"
+      submit: "Send Message"
+      sending: "Sending..."
+      success: "Thank you! Your message has been sent successfully."
+      error: "An error occurred while sending your message. Please try again."
+
+  technology:
+    title: "Technologies"
+    categories:
+      frontend:
+        name: "Frontend"
+        skills: ["React", "Vue.js", "Tailwind CSS", "JavaScript", "TypeScript", "HTML/CSS", "Stimulus.js"]
+      backend:
+        name: "Backend"
+        skills: ["Ruby on Rails", "Node.js", "Python", "REST APIs", "GraphQL"]
+      databases:
+        name: "Databases"
+        skills: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "SQLite"]
+      languages:
+        name: "Languages"
+        skills: ["Ruby", "JavaScript", "Python", "TypeScript", "HTML", "CSS"]
+
+  scores:
+    title: "Music Scores"
+    subtitle: "My arrangements and original compositions"
+    arrangements: "Arrangements"
+    compositions: "Compositions"
+    original: "Original"
+    rendering: "Rendering"
+    no_arrangements: "No arrangements yet"
+    no_compositions: "No compositions yet"
+    back_home: "Back to Home"
+    back_to_list: "Back to Scores"
+    arrangement: "Arrangement"
+    composition: "Composition"
+    view_score: "View Score"
+    audio_preview: "Audio Preview"
+    audio_not_supported: "Your browser does not support the audio element."
+    view_full_score: "View Full Score"
+    click_to_open_pdf: "Open the complete sheet music in a new tab"
+    open: "Open PDF"
+    description: "Description"
+    instruments: "Instruments"
+    tags: "Tags"
+
+  activerecord:
+    errors:
+      models:
+        contact:
+          attributes:
+            name:
+              blank: "can't be blank"
+              too_short: "is too short (minimum is 2 characters)"
+              too_long: "is too long (maximum is 100 characters)"
+            email:
+              blank: "can't be blank"
+              invalid: "is not a valid email"
+            subject:
+              blank: "can't be blank"
+              too_short: "is too short (minimum is 5 characters)"
+              too_long: "is too long (maximum is 200 characters)"
+            message:
+              blank: "can't be blank"
+              too_short: "is too short (minimum is 10 characters)"
+              too_long: "is too long (maximum is 5000 characters)"

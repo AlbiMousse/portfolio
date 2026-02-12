@@ -1,0 +1,76 @@
+<section>
+  <div class="max-w-5xl mx-auto mb-4">
+
+    <div
+      class="w-full rounded-xl bg-white/5 border-t border-white/10 backdrop-blur-md transition-colors duration-300 hover:bg-white/10 grid grid-cols-1 lg:grid-cols-2"
+      data-controller="card-highlight"
+    >
+
+      <div class="h-full overflow-hidden rounded-l-xl ">
+        <%= image_tag score.image_path,
+          alt: score.title,
+          class: "h-full object-cover" %>
+      </div>
+
+      <div class="p-4 flex flex-col justify-between space-y-2">
+
+        <h3 class="font-semibold text-lg leading-snug">
+          <%= score.title %>
+        </h3>
+
+        <p class="opacity-70 leading-tight text-xs">
+          <%= score.description.truncate(80) %>
+        </p>
+
+        <% if score.audio_path.present? || score.original_audio_path.present? %>
+          <div data-controller="audio-toggle" class="flex flex-col gap-4">
+
+          <div data-controller="audio-toggle" data-audio-toggle-selected-class="bg-white/30">
+            <div class="flex gap-2">
+              <% if score.original_audio_path.present? %>
+                <button
+                  data-audio-toggle-target="button"
+                  data-action="click->audio-toggle#playOriginal"
+                  class="inline-block rounded px-3 py-1 text-xs bg-white/10 border border-white/20 text-white/80 hover:bg-white/20"
+                >
+                  <%= t("scores.original") %>
+                </button>
+              <% end %>
+
+              <% if score.audio_path.present? %>
+                <button
+                  data-audio-toggle-target="button"
+                  data-action="click->audio-toggle#playScore"
+                  class="inline-block rounded px-3 py-1 text-xs bg-white/10 border border-white/20 text-white/80 hover:bg-white/20"
+                >
+                  <%= t("scores.rendering") %>
+                </button>
+              <% end %>
+            </div>
+          </div>
+        <audio
+          controls
+          class="score-audio w-full h-6 mt-1"
+          data-score="<%= asset_path(score.audio_path) if score.audio_path.present? %>"
+          data-original="<%= asset_path(score.original_audio_path) if score.original_audio_path.present? %>"
+        ></audio>
+
+        <% end %>
+
+        <% if score.score_url.present? %>
+          <div class="mt-1">
+            <%= link_to(score.score_url,
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                        class: "inline-flex items-center gap-1 px-2 py-1 text-xs border rounded transition-colors bg-white/10 border border-white/20 text-white/80 hover:bg-white/20") do %>
+              <span><%= t("scores.view_score") %></span>
+              <span aria-hidden="true">↗</span>
+            <% end %>
+          </div>
+        <% end %>
+
+      </div>
+
+    </div>
+  </div>
+</section>

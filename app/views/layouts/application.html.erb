@@ -8,6 +8,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= render "shared/dark_mode_check" %>
 
     <%= yield :head %>
 
@@ -25,7 +26,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body data-controller="dark-mode">
     <%= yield %>
   </body>
  </html>

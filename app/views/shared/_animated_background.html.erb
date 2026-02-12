@@ -1,0 +1,114 @@
+<div data-controller="animated-background" class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+  <svg 
+    data-animated-background-target="svg"
+    class="w-full h-full"
+    viewBox="0 0 1200 1600"
+    preserveAspectRatio="xMidYMid slice"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <radialGradient id="bgGradient" cx="50%" cy="50%" r="60%">
+        <stop offset="0%" stop-color="#111111" />
+        <stop offset="60%" stop-color="#0a0a0a" />
+        <stop offset="100%" stop-color="#000000" />
+      </radialGradient>
+    </defs>
+
+    <rect width="1200" height="1600" fill="url(#bgGradient)" />
+
+    <!-- Morphing line paths -->
+    <!-- Some of these are actually legacy from the previous system, which i've rebuilt from 0 cause it sucked -->
+    <g 
+      stroke="#FFFFFF" 
+      stroke-width="2" 
+      fill="none" 
+      opacity="0.8"
+      class="animate-floatSoft" style="--x:4px; --y:-10px; --duration:16s;"
+    >
+      <path 
+        data-morph-line="1"
+        d="M 100 200 L 1100 1400"
+        stroke-dasharray="1500"
+        stroke-dashoffset="1500"
+        class="morph-line "
+      />
+      
+      <path 
+        data-morph-line="2"
+        d="M 1100 200 L 100 1400"
+        stroke-dasharray="1500"
+        stroke-dashoffset="1500"
+        class="morph-line"
+        style="--x: 4px; --y: -10px; --duration: 16s;"
+      />
+
+      <path 
+        data-morph-line="3"
+        d="M 300 400 Q 600 200 900 400 T 1500 600"
+        stroke-dasharray="1500"
+        stroke-dashoffset="1500"
+        class="morph-line"
+        style="--x: 4px; --y: -10px; --duration: 16s;"
+      />
+
+      <path 
+        data-morph-line="4"
+        d="M 200 800 L 1000 800 Q 600 1000 200 1200"
+        stroke-dasharray="1500"
+        stroke-dashoffset="1500"
+        class="morph-line"
+        style="--x: 4px; --y: -10px; --duration: 16s;"
+      />
+    </g>
+
+    <g stroke="#FFFFFF" stroke-width="1" opacity="0.2">
+      <path d="M 0 0 L 200 0 L 0 200"/>
+      <path d="M 1200 0 L 1000 0 L 1200 200"/>
+      <path d="M 0 1600 L 200 1600 L 0 1400"/>
+      <path d="M 1200 1600 L 1000 1600 L 1200 1400"/>
+
+      <line x1="600" y1="0" x2="600" y2="1600"/>
+      <line x1="0" y1="800" x2="1200" y2="800"/>
+    </g>
+  </svg>
+</div>
+
+<style>
+  [data-morph-line] {
+    animation: none;
+  }
+
+  @keyframes drawLine {
+    from {
+      stroke-dashoffset: 1500;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .morph-line {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  [data-current-section="projects"] {
+    stroke-dasharray: 6 6;
+  }
+
+  [data-morph-line="1"] {
+    animation: drawLine 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  [data-morph-line="2"] {
+    animation: drawLine 2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+  }
+
+  [data-morph-line="3"] {
+    animation: drawLine 2s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
+  }
+
+  [data-morph-line="4"] {
+    animation: drawLine 2s cubic-bezier(0.4, 0, 0.2, 1) 0.9s forwards;
+  }
+</style>
